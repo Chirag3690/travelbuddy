@@ -114,16 +114,10 @@ These are already in `.gitignore`.
 
 ### 3.4 Connection string
 
-1. **Database** → **Connect** → **Drivers** → Python → copy URI
-2. Looks like:
+1. **Database** → **Connect** → **Drivers** → Python → copy the full connection string
+2. Replace the `<password>` placeholder in that string with your real database password (URL-encode special chars: `@` → `%40`, etc.)
 
-```
-mongodb+srv://vinle_app:<password>@vinle-prod.xxxxx.mongodb.net/?retryWrites=true&w=majority
-```
-
-3. Replace `<password>` with your real password (URL-encode special chars: `@` → `%40`, etc.)
-
-**Save as `MONGO_URL`** — you’ll paste this into Railway.
+**Save the result as `MONGO_URL`** — paste it into Railway only; never commit it to git.
 
 ---
 
@@ -160,7 +154,7 @@ Or: **Empty Project** → **New** → **GitHub Repo** → set root to `backend`.
 Railway → your service → **Variables** tab → **RAW Editor** → paste:
 
 ```env
-MONGO_URL=mongodb+srv://vinle_app:YOUR_PASSWORD@vinle-prod.xxxxx.mongodb.net/?retryWrites=true&w=majority
+MONGO_URL=<paste connection string from Atlas — Database → Connect → Drivers>
 DB_NAME=vinle_prod
 ALLOWED_ORIGINS=*
 ```
@@ -564,7 +558,7 @@ Review: often 1–3 days.
 ### Railway (backend)
 
 ```env
-MONGO_URL=mongodb+srv://vinle_app:PASSWORD@cluster.mongodb.net/?retryWrites=true&w=majority
+MONGO_URL=<Atlas connection string — set in Railway, not in git>
 DB_NAME=vinle_prod
 ALLOWED_ORIGINS=*
 ```
@@ -590,7 +584,7 @@ EXPO_PUBLIC_BACKEND_URL=http://YOUR_LAN_IP:8000
 ### Local dev only (`backend/.env`)
 
 ```env
-MONGO_URL=mongodb+srv://...   # or mongodb://localhost for local
+MONGO_URL=<Atlas connection string or local MongoDB URL>
 DB_NAME=vinle_dev
 ```
 
