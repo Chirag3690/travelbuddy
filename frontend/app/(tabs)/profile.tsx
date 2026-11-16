@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   topBarGradient: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     height: GALLERY_H * 0.35,
   },
   topBarTitle: {

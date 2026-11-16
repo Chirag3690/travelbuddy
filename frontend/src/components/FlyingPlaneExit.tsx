@@ -254,7 +254,7 @@ export function FlyingPlaneExit({ progress, path, color }: FlyingPlaneExitProps)
 
 const styles = StyleSheet.create({
   layer: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     alignItems: "center",
     justifyContent: "center",
     zIndex: 60,

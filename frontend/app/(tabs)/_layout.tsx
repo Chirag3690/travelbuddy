@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { ColorValue, View } from "react-native";
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "@/src/lib/theme";
@@ -6,8 +6,8 @@ import VinciBackdrop from "@/src/components/VinciBackdrop";
 import AnimatedTabBar from "@/src/components/AnimatedTabBar";
 
 const Icon = (name: keyof typeof Ionicons.glyphMap) => {
-  function TabIcon({ color, size }: { color: string; size: number }) {
-    return <Ionicons name={name} size={size} color={color} />;
+  function TabIcon({ color, size }: { focused: boolean; color: ColorValue; size: number }) {
+    return <Ionicons name={name} size={size} color={color as string} />;
   }
   TabIcon.displayName = `TabIcon(${name})`;
   return TabIcon;

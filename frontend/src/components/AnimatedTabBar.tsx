@@ -1,16 +1,20 @@
 import { useEffect } from "react";
 import { LayoutChangeEvent, Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
-import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import type { BottomTabBarProps } from "expo-router/tabs";
 import * as Haptics from "expo-haptics";
 import { useTheme } from "@/src/lib/theme";
 
 const SPRING = { damping: 22, stiffness: 280, mass: 0.7 };
 
-export default function AnimatedTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
+export default function AnimatedTabBar({
+  state,
+  descriptors,
+  emitter,
+  navigateToTab,
+  insets,
+}: BottomTabBarProps) {
   const { colors } = useTheme();
-  const insets = useSafeAreaInsets();
   const trackWidth = useSharedValue(0);
   const indexSv = useSharedValue(state.index);
 
@@ -66,19 +70,19 @@ export default function AnimatedTabBar({ state, descriptors, navigation }: Botto
           const color = isFocused ? colors.primary : colors.textSecondary;
 
           const onPress = () => {
-            const event = navigation.emit({
+            const event = emitter.emit({
               type: "tabPress",
               target: route.key,
               canPreventDefault: true,
             });
             if (!isFocused && !event.defaultPrevented) {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
-              navigation.navigate(route.name, route.params);
+              navigateToTab(route.key);
             }
           };
 
           const onLongPress = () => {
-            navigation.emit({ type: "tabLongPress", target: route.key });
+            emitter.emit({ type: "tabLongPress", target: route.key });
           };
 
           return (

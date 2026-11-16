@@ -68,7 +68,7 @@ export default function ProfilePhotoGallery({
       <LinearGradient
         colors={["rgba(0,0,0,0.45)", "transparent", "rgba(0,0,0,0.65)"]}
         locations={[0, 0.35, 1]}
-        style={StyleSheet.absoluteFillObject}
+        style={StyleSheet.absoluteFill}
         pointerEvents="none"
       />
       {total > 1 && (

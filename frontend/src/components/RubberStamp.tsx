@@ -430,7 +430,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 1,
   },
   imprintCenter: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     alignItems: "center",
     justifyContent: "center",
   },

@@ -828,7 +828,7 @@ function MinimalCard({
         <LinearGradient
           colors={["rgba(0,0,0,0.55)", "rgba(0,0,0,0.15)", "rgba(0,0,0,0.55)"]}
           locations={[0, 0.5, 1]}
-          style={StyleSheet.absoluteFillObject as any}
+          style={StyleSheet.absoluteFill as any}
           pointerEvents="none"
         />
         <View style={styles.posterTopRow} pointerEvents="none">
@@ -929,7 +929,7 @@ function GroupCard({
         <LinearGradient
           colors={["rgba(0,0,0,0.65)", "rgba(0,0,0,0.2)", "rgba(0,0,0,0.72)"]}
           locations={[0, 0.48, 1]}
-          style={StyleSheet.absoluteFillObject as any}
+          style={StyleSheet.absoluteFill as any}
           pointerEvents="none"
         />
         <View style={styles.posterTopRow} pointerEvents="none">
@@ -1095,7 +1095,7 @@ const styles = StyleSheet.create({
   // Deck (rubber stamps)
   deck: { flex: 1, paddingHorizontal: 20, paddingTop: 16, paddingBottom: 8, overflow: "visible" },
   cardWrap: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     left: 20,
     right: 20,
     top: 16,
@@ -1105,7 +1105,7 @@ const styles = StyleSheet.create({
   cardStackLayer: { flex: 1 },
   cardMeasure: { flex: 1 },
   imprintSlot: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     alignItems: "center",
     justifyContent: "center",
     zIndex: 30,
@@ -1205,8 +1205,8 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   travelerTagText: { fontSize: 11, fontWeight: "700", color: COLORS.textPrimary, letterSpacing: 0.2 },
-  cardImg: { ...StyleSheet.absoluteFillObject as any, width: "100%", height: "100%" },
-  tint: { ...StyleSheet.absoluteFillObject as any },
+  cardImg: { ...StyleSheet.absoluteFill as any, width: "100%", height: "100%" },
+  tint: { ...StyleSheet.absoluteFill as any },
   sharedBanner: {
     position: "absolute", top: 20, alignSelf: "center",
     flexDirection: "row", alignItems: "center", gap: 6,

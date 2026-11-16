@@ -13,9 +13,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
-import * as Linking from "expo-linking";
 import * as WebBrowser from "expo-web-browser";
 import { useRouter } from "expo-router";
+
+WebBrowser.maybeCompleteAuthSession();
 import Animated, {
   Easing,
   interpolate,
@@ -153,10 +154,10 @@ export default function Login() {
   const handleLogin = async () => {
     setLoading(true);
     try {
+      // Use the app scheme — not exp://… from Expo Go.
+      // Emergent/Google reject Expo Go redirect URLs as "invalid_request".
       const redirectUrl =
-        Platform.OS === "web"
-          ? window.location.origin + "/"
-          : Linking.createURL("auth");
+        Platform.OS === "web" ? window.location.origin + "/" : "vinle://auth";
 
       const authUrl = `https://auth.emergentagent.com/?redirect=${encodeURIComponent(redirectUrl)}`;
 
@@ -291,7 +292,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 28,
   },
   shimmerMask: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
